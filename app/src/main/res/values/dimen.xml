@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="margin_standard">16dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
+    <dimen name="flexible_space_image_height">240dp</dimen>
+    <dimen name="tab_height">48dp</dimen>
+    <dimen name="status_bar_height">24dp</dimen>
+    <dimen name="top_margin_for_title">32dp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
+</resources>
