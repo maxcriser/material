@@ -112,6 +112,8 @@
         android:background="@android:color/transparent"
         android:src="@drawable/ic_more_dots"/>
 
+    <include layout="@layout/view_circle_indicator"/>
+
     <include layout="@layout/view_floating_button_menu"/>
 
 </FrameLayout>

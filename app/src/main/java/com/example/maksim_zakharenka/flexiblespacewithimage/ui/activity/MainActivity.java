@@ -1,6 +1,7 @@
 package com.example.maksim_zakharenka.flexiblespacewithimage.ui.activity;
 
 import android.annotation.TargetApi;
+import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,7 +9,9 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
@@ -27,6 +30,9 @@ import com.example.maksim_zakharenka.flexiblespacewithimage.util.header.ScrollUt
 import com.example.maksim_zakharenka.flexiblespacewithimage.util.header.Scrollable;
 import com.example.maksim_zakharenka.flexiblespacewithimage.util.header.SlidingTabLayout;
 import com.example.maksim_zakharenka.flexiblespacewithimage.util.header.TouchInterceptionFrameLayout;
+
+import me.relex.circleindicator.CircleIndicator;
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
 
 public class MainActivity extends BaseActivity implements ObservableScrollViewCallbacks {
 
@@ -48,10 +54,65 @@ public class MainActivity extends BaseActivity implements ObservableScrollViewCa
     private int mTabHeight;
     private boolean mScrolled;
 
+    public void showCustomAlertDialog() {
+        final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        final LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.view_custom_dialog_test, null);
+        dialogBuilder.setView(dialogView);
+        dialogBuilder.setCancelable(false);
+
+        dialogBuilder.setTitle("Sign in");
+        dialogBuilder.setPositiveButton("CANCEL", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(final DialogInterface dialog, final int which) {
+            }
+        });
+
+        dialogBuilder.setNegativeButton("USE PASSWORD", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(final DialogInterface dialog, final int which) {
+                dialog.dismiss();
+            }
+        });
+
+        final AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
+    }
+
+    private void showFabShadow(){
+        new MaterialTapTargetPrompt.Builder(this)
+                .setTarget(findViewById(R.id.fab))
+                .setPrimaryText("Send your first email")
+                .setSecondaryText("Tap the envelop to start composing your first email")
+                .setOnHidePromptListener(new MaterialTapTargetPrompt.OnHidePromptListener()
+                {
+                    @Override
+                    public void onHidePrompt(MotionEvent event, boolean tappedTarget)
+                    {
+                        //Do something such as storing a value so that this prompt is never shown again
+                    }
+
+                    @Override
+                    public void onHidePromptComplete()
+                    {
+
+                    }
+                })
+                .show();
+    }
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /**
+         * Test methods
+         */
+//        showCustomAlertDialog();
+//        showFabShadow();
 
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         ViewCompat.setElevation(findViewById(R.id.header), getResources().getDimension(R.dimen.toolbar_elevation));
@@ -59,6 +120,14 @@ public class MainActivity extends BaseActivity implements ObservableScrollViewCa
         mPagerAdapter = new NavigationAdapter(getSupportFragmentManager());
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(mPagerAdapter);
+
+        /**
+         * Test indicator
+         */
+        CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
+        indicator.setViewPager(mPager);
+
+
         mImageView = findViewById(R.id.image);
         mOverlayView = findViewById(R.id.overlay);
         mFlexibleSpaceHeight = getResources().getDimensionPixelSize(R.dimen.flexible_space_image_height);
