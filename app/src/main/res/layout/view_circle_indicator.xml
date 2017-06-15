@@ -5,6 +5,7 @@
              android:layout_gravity="bottom"
              android:background="#909090">
 
+    <!--some else indicator-->
     <me.relex.circleindicator.CircleIndicator
         android:id="@+id/indicator"
         android:layout_width="match_parent"
