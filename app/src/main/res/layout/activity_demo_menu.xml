@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginTop="24dp"
+              android:orientation="vertical">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:onClick="openMainActivity"
+        android:text="Main Activity"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:onClick="openLoadingFB"
+        android:text="Loading floating button"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:onClick="openBottomMenu"
+        android:text="Bottom menu"/>
+
+</LinearLayout>

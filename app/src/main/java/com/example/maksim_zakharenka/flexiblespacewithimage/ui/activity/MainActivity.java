@@ -2,6 +2,7 @@ package com.example.maksim_zakharenka.flexiblespacewithimage.ui.activity;
 
 import android.annotation.TargetApi;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -114,7 +115,7 @@ public class MainActivity extends BaseActivity implements ObservableScrollViewCa
 //        showCustomAlertDialog();
 //        showFabShadow();
 
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+//        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         ViewCompat.setElevation(findViewById(R.id.header), getResources().getDimension(R.dimen.toolbar_elevation));
 
         mPagerAdapter = new NavigationAdapter(getSupportFragmentManager());
